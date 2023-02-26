@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { PostIndex } from "./PostIndex";
 import { Signup } from "./Signup";
+import { Login } from "./Login";
+import { LogoutLink } from "./LogoutLink";
 export function Content() {
   // const photos = [ these lines were to test my index function
   //   { id: 1, name: "Fist", url: "https://via.placeholder.com/150", width: 150, height: 150 },
@@ -22,6 +24,8 @@ export function Content() {
   return (
     <div>
       <Signup />
+      <Login />
+      <LogoutLink />
       <PostIndex posts={posts} />
     </div>
   );
