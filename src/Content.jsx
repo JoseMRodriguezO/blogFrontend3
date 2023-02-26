@@ -1,12 +1,27 @@
-import { PhotosIndex } from "./PhotosIndex";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { PostIndex } from "./PostIndex";
+
 export function Content() {
-  const photos = [
-    { id: 1, name: "Fist", url: "https://via.placeholder.com/150", width: 150, height: 150 },
-    { id: 2, name: "second", url: "https://via.placeholder.com/300", width: 300, height: 300 },
-  ];
+  // const photos = [ these lines were to test my index function
+  //   { id: 1, name: "Fist", url: "https://via.placeholder.com/150", width: 150, height: 150 },
+  //   { id: 2, name: "second", url: "https://via.placeholder.com/300", width: 300, height: 300 },
+  // ];
+
+  const [posts, setPosts] = useState([]);
+  const handleIndexPosts = () => {
+    console.log("handleIndexPosts");
+    axios.get("http://localhost:3000/posts.json").then((response) => {
+      console.log(response.data);
+      setPosts(response.data);
+    });
+  };
+
+  useEffect(handleIndexPosts, []);
+
   return (
     <div>
-      <PhotosIndex photos={photos} />
+      <PostIndex posts={posts} />
     </div>
   );
 }
